@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+     <h1>¡Bienvenido!</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header> 
+
+<ion-content padding>
+   <p text-center>¡Felicidades! ahora eres un Pixer</p>
+ 
+   <ion-list>
+      
+        <ion-item>
+            <ion-icon name="ios-pricetags" padding> Ubicación</ion-icon>
+                </ion-item>
+        <ion-item>
+            <ion-icon name="ios-thumbs-up" padding> Actividades de interes</ion-icon>
+        </ion-item>
+
+        <ion-item>
+            <ion-icon name="md-bicycle" padding> Actividades practicas </ion-icon>
+        </ion-item>
+
+      </ion-list>
+      
+    <div padding>     
+        <button ion-button clear full (click)="completar()">Completa tus datos</button>
+    </div>
+    <div padding>     
+       <button ion-button full (click)="siguiente()">Siguiente</button>
+    </div>
+
+</ion-content>

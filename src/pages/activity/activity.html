@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+       <h1>ACTIVIDADES</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   <h1 text-center>ACTIVIDADES</h1>
+   <p text-center>Selecciona las actividades que deseas practicar</p>
+  <ion-list>
+ 
+      <ion-item>
+          <ion-label>Futbol</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+    
+      <ion-item>
+          <ion-label>Basquetball</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Correr</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Cantar</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Nadar</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+    
+      <ion-item>
+          <ion-label>Bicicleta</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+          <ion-label>Guitarra</ion-label>
+          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked> Otro</ion-label>
+          <ion-input type="text"></ion-input>
+      </ion-item>
+   
+    </ion-list>
+    <div padding text-center>
+      <button ion-button (click)="volver()">Regresar</button>
+      <button ion-button (click)="siguiente()">Siguiente</button>
+    </div>
+
+</ion-content>
