@@ -15,21 +15,21 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content padding>
   <ion-grid>
     <ion-row>
       <ion-col>
-        <sebm-google-map
-          [latitude]="location.lat"
-          [longitude]="location.lng"
-          [zoom]="14">
-          <sebm-google-map-marker
-            [latitude]="place.location.lat"
-            [longitude]="place.location.lng" 
-            *ngFor="let place of places">
-            </sebm-google-map-marker>
-        </sebm-google-map>
+
+      <ion-card *ngFor="let place of places; let i = index" (click)="onOpenPlace(place, i)">
+        <!--<img [src]="place.imageUrl">-->
+        <ion-card-content text-center>
+          <ion-card-title>
+            {{ place.title }}
+          </ion-card-title>
+          <p>{{ place.description }}</p>
+        </ion-card-content>
+      </ion-card>
+
       </ion-col>
     </ion-row>
   </ion-grid>

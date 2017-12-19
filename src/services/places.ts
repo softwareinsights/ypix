@@ -9,11 +9,16 @@ import { Place } from "../models/place";
 import { Location } from "../models/location";
 import { Configuration } from './../app/app.constants';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+
 declare var cordova: any;
 
 @Injectable()
 export class PlacesService {
-  private places: Place[] = [];
+  // private places: Place[] = [];
+  private places: PlaceInterface[] = [];
 
   private headers: Headers;
   private actionUrl: string;
@@ -37,69 +42,76 @@ export class PlacesService {
           .catch(this.handleError);
   }
 
-  private handleError(error: Response) {
-      console.error(error);
-      return Observable.throw(error.json().error || 'Server error');
+  loadPlaces(): Observable<PlaceInterface[]>  {
+      this.actionUrl = `${this._configuration.ServerWithApiUrl}Places`;
+      return this._http.get(this.actionUrl, { headers: this.headers })
+          .map((response: Response) => <PlaceInterface>response.json())
+          .catch(this.handleError);
   }
 
 
-  addPlace(title: string,
-           description: string,
-           location: Location,
-           imageUrl: string) {
-    const place = new Place(title, description, location, imageUrl);
-    this.places.push(place);
-    this.storage.set('places', this.places)
-      .then()
-      .catch(
-        err => {
-          this.places.splice(this.places.indexOf(place), 1);
-        }
-      );
+  fetchPlaces(): Observable<PlaceInterface[]> {
+
+      this.actionUrl = `${this._configuration.ServerWithApiUrl}Places`;
+      return this._http.get(this.actionUrl, { headers: this.headers })
+          .map((response: Response) => <PlaceInterface>response.json())
+          .catch(this.handleError)
+          .do((places: PlaceInterface[]) => {
+            this.places = places != null ? places : [];
+          });
   }
 
-  loadPlaces() {
-    return this.places.slice();
-  }
+  deletePlace(index: number): Observable<any> {
 
-  fetchPlaces() {
-    return this.storage.get('places')
-      .then(
-        (places: Place[]) => {
-          this.places = places != null ? places : [];
-          return this.places;
-        }
-      )
-      .catch(
-        err => console.log(err)
-      );
-  }
-
-  deletePlace(index: number) {
     const place = this.places[index];
-    this.places.splice(index, 1);
-    this.storage.set('places', this.places)
-      .then(
-        () => {
-          this.removeFile(place);
-        }
-      )
-      .catch(
-        err => console.log(err)
-      );
+
+    console.log("index", index);
+    console.log("this.places", this.places);
+    console.log("place", place);
+
+    this.actionUrl = `${this._configuration.ServerWithApiUrl}Places/${place.id}`;
+
+    console.log("actionUrl", this.actionUrl);
+
+    return this._http.delete(this.actionUrl, { headers: this.headers })
+        .map((response: Response) => <any>response.json())
+        .catch(this.handleError)
+        .do((response) => {
+          
+          console.log("response", response);
+          console.log("place en do", place);
+          this.removeFile(place)
+        });
   }
 
   private removeFile(place: Place) {
     const currentName = place.imageUrl.replace(/^.*[\\\/]/, '');
     this.file.removeFile(cordova.file.dataDirectory, currentName)
       .then(
-        () => console.log('Removed File')
+        () => console.log('Archivo Removido')
       )
       .catch(
         () => {
-          console.log('Error while removing File');
-          this.addPlace(place.title, place.description, place.location, place.imageUrl);
+          console.log('Error mientras se eliminaba este archivo');
+
+          const placevalue: PlaceInterface = {
+            "title": place.title, 
+            "description": place.description, 
+            "location": place.location, 
+            "imageUrl": place.imageUrl
+          }
+
+          this.create(placevalue)
+            .subscribe(
+                (response: any) => console.log("Se ha recuperado el lugar"));
+                
         }
       );
   }
+
+  private handleError(error: Response) {
+      console.error(error);
+      return Observable.throw(error.json().error || 'Server error');
+  }
+
 }

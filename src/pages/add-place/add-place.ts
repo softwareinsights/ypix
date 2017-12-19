@@ -73,8 +73,6 @@ export class AddPlacePage {
             } 
           });
 
-    this.placesService
-      .addPlace(form.value.title, form.value.description, this.location, this.imageUrl);
     form.reset();
     this.location = {
       lat: 40.7624324,
@@ -139,7 +137,7 @@ export class AddPlacePage {
               (data: Entry) => {
                 this.imageUrl = data.nativeURL;
                 this.camera.cleanup();
-                // File.removeFile(path, currentName);
+                this.file.removeFile(path, currentName);
               }
             )
             .catch(

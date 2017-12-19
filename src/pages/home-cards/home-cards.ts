@@ -15,9 +15,9 @@ import { PlacePage } from "../place/place";
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home-cards.html'
 })
-export class HomePage implements OnInit {
+export class HomeCardsPage implements OnInit {
   addPlacePage = AddPlacePage;
   // places: Place[] = [];
   places: PlaceInterface[] = [];
@@ -36,7 +36,7 @@ export class HomePage implements OnInit {
               private toastCtrl: ToastController,
               private storage: Storage) {
       this.locationIsSet = false;
-      this.storage.get('lat').then(
+            this.storage.get('lat').then(
         latitude => {
          if (latitude !== null)  {
 

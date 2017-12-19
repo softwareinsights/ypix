@@ -1,3 +1,4 @@
+import { StartPage } from './../pages/start/start';
 import { ActivityPage } from './../pages/activity/activity';
 import { ToastController } from 'ionic-angular';
 import { AuthService } from './../pages/login/login.service';
@@ -44,15 +45,14 @@ export class MyApp {
     });
       this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Login', component: LoginPage },
-      { title: 'Register', component: RegisterPage },
+      { title: 'Bienvenidos', component: WelcomePage },
       { title: 'Actividades', component: ActivityPage },
       { title: 'Completa tus datos', component: ComplatePage },
-      { title: 'Recover', component: RecoverPage },
-      { title: 'Recoverymail', component: RecoverymailPage },
+      { title: 'Recuperar Contraseña', component: RecoverPage },
       { title: 'Verificación', component: VerificationPage },
-      { title: 'Welcome', component: WelcomePage },
-      { title: 'Agrega un Lugar', component: HomePage }
+      { title: 'Login', component: LoginPage },
+      { title: 'Register', component: RegisterPage },
+      { title: 'Inicio', component: StartPage }
     ];
   }
 

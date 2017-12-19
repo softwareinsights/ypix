@@ -1,3 +1,5 @@
+import { StartPage } from './../pages/start/start';
+import { HomeCardsPage } from './../pages/home-cards/home-cards';
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { IonicStorageModule } from "@ionic/storage";
@@ -46,7 +48,9 @@ import { RegisterService } from '../pages/register/register.service';
     ActivityPage,
     RecoverPage,
     RecoverymailPage,
-    PlacePage
+    PlacePage,
+    HomeCardsPage,
+    StartPage
   ],
   imports: [
     BrowserModule,
@@ -71,7 +75,9 @@ import { RegisterService } from '../pages/register/register.service';
     ActivityPage,
     RecoverPage,
     RecoverymailPage,
-    PlacePage
+    PlacePage,
+    HomeCardsPage,
+    StartPage
   ],
   providers: [
     File,

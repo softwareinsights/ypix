@@ -24,7 +24,8 @@ export class PlacePage {
   }
 
   onDelete() {
-    this.placesService.deletePlace(this.index);
+    this.placesService.deletePlace(this.index)
+      .subscribe(response => console.log("response", response));
     this.onLeave();
   }
 }
