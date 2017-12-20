@@ -1,6 +1,6 @@
 import { Storage } from '@ionic/storage';
 import { LocationInterface } from './../add-place/location.interface';
-import { ToastController } from 'ionic-angular';
+import { ToastController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LoadingController } from 'ionic-angular';
 import { PlaceInterface } from './../add-place/place.interface';
@@ -30,35 +30,39 @@ export class HomePage implements OnInit {
   };
 
   constructor(private modalCtrl: ModalController,
+              private platform: Platform,
               private placesService: PlacesService,
               private loadingCtrl: LoadingController,
               private geolocation: Geolocation,
               private toastCtrl: ToastController,
               private storage: Storage) {
-      this.locationIsSet = false;
-      this.storage.get('lat').then(
-        latitude => {
-         if (latitude !== null)  {
+      platform.ready().then(() => {
 
-            this.storage.get('lng').then(
-              longitude => {
-              if (longitude !== null)  {
-                this.location.lng = longitude;
-                this.location.lat = latitude;
-                this.locationIsSet = true;
+        this.storage.get('lat').then(
+          latitude => {
+          if (latitude !== null)  {
 
-                } else {
-                  this.locate();
-                } 
-              }
-            );
+              this.storage.get('lng').then(
+                longitude => {
+                if (longitude !== null)  {
+                  this.location.lng = longitude;
+                  this.location.lat = latitude;
+                  this.locationIsSet = true;
 
-
-          } else {
-            this.locate();
-          } 
-        }
-      );
+                  } else {
+                    this.locate();
+                  } 
+                }
+              );
+            } else {
+              this.locate();
+            } 
+          }
+        );
+        
+    });
+    
+    this.locationIsSet = false;
   }
 
   ngOnInit() { 

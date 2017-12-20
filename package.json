@@ -60,7 +60,7 @@
       "locator": "ios"
     }
   ],
-  "description": "ionic2-course: An Ionic project",
+  "description": "nuevo ypix",
   "cordova": {
     "plugins": {
       "ionic-plugin-keyboard": {},
