@@ -11,6 +11,7 @@ import { File, Entry, FileError } from '@ionic-native/file';
 import { SetLocationPage } from "../set-location/set-location";
 import { Location } from "../../models/location";
 import { PlacesService } from "../../services/places";
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 declare var cordova: any;
 
@@ -34,8 +35,16 @@ export class AddPlacePage {
               private camera: Camera,
               private file: File,
               private authService: AuthService,
-              private navCtrl: NavController) {
+              private navCtrl: NavController,
+              private androidPermissions: AndroidPermissions) {
+    this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.CAMERA).then(
+      result => console.log('Has permission?',result.hasPermission),
+      err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.CAMERA)
+    );
+    
+    this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);              
   }
+  
 
   ionViewCanEnter(): boolean{
    if(this.authService.isLoggedIn){

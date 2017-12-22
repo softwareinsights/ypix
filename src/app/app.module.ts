@@ -6,10 +6,11 @@ import { IonicStorageModule } from "@ionic/storage";
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { File } from '@ionic-native/file';
-import { Camera } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Camera } from '@ionic-native/camera';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -88,6 +89,7 @@ import { RegisterService } from '../pages/register/register.service';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlacesService,
     Configuration,
+    Camera,AndroidPermissions,
     RegisterService,
     AuthService
   ]
