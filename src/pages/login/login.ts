@@ -1,6 +1,6 @@
 import { Storage } from '@ionic/storage';
 import { RegisterPage } from './../register/register';
-import { HomePage } from './../home/home';
+import { StartPage } from './../start/start';
 import { AuthService } from './login.service';
 import { LoginInterface } from './login.interface';
 import { Component, ErrorHandler } from '@angular/core';
@@ -25,7 +25,7 @@ export class LoginPage {
     private storage: Storage
     ) {
       if(this.storage.get("isLoggetIn")){
-        // this.navCtrl.push(HomePage);
+        this.navCtrl.push(StartPage);
       }
   }
 
@@ -52,7 +52,7 @@ export class LoginPage {
 
               if (this.isLogged) {
                 alert("¡Te has logeado correctamente!");
-                this.navCtrl.setRoot(HomePage)
+                this.navCtrl.setRoot(StartPage)
                 .then(data => console.log("data", data),
                   error  => console.log("error", error));
               } else {
