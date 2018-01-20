@@ -4,16 +4,28 @@
       <ion-title>Menú</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <ion-content>
-    <ion-list>
-      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+    <ion-list *ngIf="!this.authService.isLoggedIn">
+
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)" >
         {{p.title}}
       </button>
+
+    </ion-list>
+
+    <ion-list *ngIf="this.authService.isLoggedIn">
+        
+      <button ion-item *ngFor="let pl of pagesL" (click)="openPage(pl)">
+        {{pl.title}}
+      </button> 
+
       <button ion-item (click)="closeSession()">
         Cerrar Sesión
       </button>
     </ion-list>
+
   </ion-content>
 </ion-menu>
-
+s
 <ion-nav #content [root]="rootPage"></ion-nav>
