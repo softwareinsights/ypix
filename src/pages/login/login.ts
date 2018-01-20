@@ -25,7 +25,7 @@ export class LoginPage {
     private storage: Storage
     ) {
       if(this.storage.get("isLoggetIn")){
-        this.navCtrl.push(StartPage);
+        // this.navCtrl.push(StartPage);
       }
   }
 
