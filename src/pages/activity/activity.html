@@ -16,42 +16,42 @@
  
       <ion-item>
           <ion-label>Futbol</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.futbol" color="blue" checked="false"></ion-checkbox>
       </ion-item>
     
       <ion-item>
           <ion-label>Basquetball</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.basquetball" color="blue" checked="false"></ion-checkbox>
       </ion-item>
 
       <ion-item>
           <ion-label>Correr</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.correr" [(ngModel)]="activities.futbol" color="blue" checked="false"></ion-checkbox>
       </ion-item>
 
       <ion-item>
           <ion-label>Cantar</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.cantar" color="blue" checked="false"></ion-checkbox>
       </ion-item>
 
       <ion-item>
           <ion-label>Nadar</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.nadar" color="blue" checked="false"></ion-checkbox>
       </ion-item>
     
       <ion-item>
           <ion-label>Bicicleta</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.bicicleta" color="blue" checked="false"></ion-checkbox>
       </ion-item>
 
       <ion-item>
           <ion-label>Guitarra</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+          <ion-checkbox [(ngModel)]="activities.guitarra" color="blue" checked="false"></ion-checkbox>
       </ion-item>
 
       <ion-item>
           <ion-label stacked> Otro</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input [(ngModel)]="activities.otro" type="text"></ion-input>
       </ion-item>
    
     </ion-list>

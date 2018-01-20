@@ -1,6 +1,8 @@
+import { ActivityInterface } from './activity.interface';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { VerificationPage } from '../verification/verification';
+
 
 @Component({
   selector: 'page-activity',
@@ -8,10 +10,13 @@ import { VerificationPage } from '../verification/verification';
 })
 export class ActivityPage {
 
+  activities: ActivityInterface;
+
   constructor(public navCtrl: NavController) {
 
   }
   siguiente(){
+    console.log("activities", this.activities);
     this.navCtrl.push(VerificationPage);
   }
   
