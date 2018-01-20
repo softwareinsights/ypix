@@ -51,6 +51,18 @@ export class PlacesService {
 
 
   fetchPlaces(): Observable<PlaceInterface[]> {
+      const actividades = {};
+      this.storage.get("Actividades")
+        .then(result => {
+
+          actividades = result;
+
+        });
+
+      if (actividades.futbol) {
+
+
+      }
 
       this.actionUrl = `${this._configuration.ServerWithApiUrl}Places`;
       return this._http.get(this.actionUrl, { headers: this.headers })
