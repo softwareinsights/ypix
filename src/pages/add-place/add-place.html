@@ -28,6 +28,49 @@
           required></ion-textarea>
       </ion-item>
     </ion-list>
+
+
+    <h5 text-center>ACTIVIDADES</h5>
+    <p text-center>Selecciona las actividades que se realizan en este Lugar</p>
+   <ion-list>
+  
+       <ion-item>
+           <ion-label>Futbol</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+     
+       <ion-item>
+           <ion-label>Basketball</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+ 
+       <ion-item>
+           <ion-label>Correr</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+ 
+       <ion-item>
+           <ion-label>Programación</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+ 
+       <ion-item>
+           <ion-label>Natación</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+     
+       <ion-item>
+           <ion-label>Bicicleta</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+ 
+       <ion-item>
+           <ion-label>Futbol Americano</ion-label>
+           <ion-checkbox color="blue" checked="false"></ion-checkbox>
+       </ion-item>
+    
+     </ion-list>
+     
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -65,30 +108,6 @@
               [latitude]="location.lat"
               [longitude]="location.lng"></sebm-google-map-marker>
           </sebm-google-map>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col text-center>
-          <h5>Toma una foto</h5>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button
-            ion-button
-            icon-left
-            block
-            outline
-            type="button"
-            (click)="onTakePhoto()">
-            <ion-icon name="camera"></ion-icon>
-            Abrir Cámara
-          </button>
-        </ion-col>
-      </ion-row>
-      <ion-row *ngIf="imageUrl != ''">
-        <ion-col>
-          <img [src]="imageUrl">
         </ion-col>
       </ion-row>
       <ion-row>

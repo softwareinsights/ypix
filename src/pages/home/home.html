@@ -5,7 +5,7 @@
       <ion-icon name='menu'></ion-icon>
     </button>
     <ion-title>
-      Lugares
+      Lugares Guardados
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only [navPush]="addPlacePage">
@@ -24,11 +24,14 @@
           [latitude]="location.lat"
           [longitude]="location.lng"
           [zoom]="14">
+          
           <sebm-google-map-marker
             [latitude]="place.location.lat"
             [longitude]="place.location.lng" 
             *ngFor="let place of places">
+            
             </sebm-google-map-marker>
+    
         </sebm-google-map>
       </ion-col>
     </ion-row>

@@ -4,7 +4,6 @@ import { ToastController, Platform } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LoadingController } from 'ionic-angular';
 import { PlaceInterface } from './../add-place/place.interface';
-import { Location } from './../../models/location';
 import { Component, OnInit } from '@angular/core';
 
 import { ModalController } from 'ionic-angular';

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { Http, Response, Headers } from '@angular/http';
 
 import { Place } from "../models/place";
-import { Location } from "../models/location";
+
 import { Configuration } from './../app/app.constants';
 
 import 'rxjs/add/operator/map';

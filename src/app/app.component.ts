@@ -4,7 +4,6 @@ import { ToastController } from 'ionic-angular';
 import { AuthService } from './../pages/login/login.service';
 import { WelcomePage } from './../pages/welcome/welcome';
 import { VerificationPage } from './../pages/verification/verification';
-import { RecoverymailPage } from './../pages/recoverymail/recoverymail';
 import { RecoverPage } from './../pages/recover/recover';
 import { ComplatePage } from './../pages/complate/complate';
 import { RegisterPage } from './../pages/register/register';

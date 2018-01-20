@@ -1,6 +1,5 @@
 import { PlaceInterface } from './place.interface';
 import { AuthService } from './../login/login.service';
-import { LoginPage } from './../login/login';
 import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ModalController, LoadingController, ToastController, NavController } from "ionic-angular";

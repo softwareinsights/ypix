@@ -3,7 +3,7 @@ import { RegisterPage } from './../register/register';
 import { HomePage } from './../home/home';
 import { AuthService } from './login.service';
 import { LoginInterface } from './login.interface';
-import { Component, ErrorHandler } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { RecoverPage } from '../recover/recover';
 
