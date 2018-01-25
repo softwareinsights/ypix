@@ -23,7 +23,8 @@
         <sebm-google-map
           [latitude]="location.lat"
           [longitude]="location.lng"
-          [zoom]="14">
+          [zoom]="14"
+          [zoomControl]="false">
           <sebm-google-map-marker
             [latitude]="place.location.lat"
             [longitude]="place.location.lng" 
@@ -42,6 +43,7 @@
               <ion-icon name="locate"></ion-icon>
             </button>
        </ion-fab>
+       
       </ion-col>
     </ion-row>
   </ion-grid>
