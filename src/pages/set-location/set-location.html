@@ -1,7 +1,9 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>Elige un lugar</ion-title>
+    <ion-title>
+      <h1 text-center>Elige un lugar</h1> 
+    </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -35,8 +37,7 @@
         <button
           ion-button
           block
-          color="danger"
-          (click)="onAbort()">Abortar</button>
+          (click)="onAbort()" class="btnDanger">Abortar</button>
       </ion-col>
     </ion-row>
   </ion-grid>
