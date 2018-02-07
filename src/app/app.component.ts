@@ -58,8 +58,7 @@ export class MyApp {
 
       { title: 'Inicio', component: StartPage, icon:'home' },
       { title: 'Actividades', component: ActivityPage, icon:'ios-bicycle' },
-      { title: 'Completa tus datos', component: ComplatePage, icon:'ios-checkbox' },
-      { title: 'Recuperar Contraseña', component: RecoverPage, icon:'ios-construct' }
+      { title: 'Completa tus datos', component: ComplatePage, icon:'ios-checkbox' }
     ];
    
   }
