@@ -58,7 +58,7 @@ import { RegisterService } from '../pages/register/register.service';
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAgdv3BULjX0nTwSiCFF48sBZxqhyEb-zA'
+      apiKey: 'AIzaSyDe1i2PRJbqp7s3PbEv_xS3-nEiSS0QFxQ'
     })
   ],
   bootstrap: [IonicApp],
