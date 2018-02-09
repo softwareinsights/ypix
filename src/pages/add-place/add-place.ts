@@ -1,7 +1,9 @@
+import { ActivityInterface } from './../activity/activity.interface';
+import { ActivityService } from './../activity/activity.service';
 import { PlaceInterface } from './place.interface';
 import { AuthService } from './../login/login.service';
 import { LoginPage } from './../login/login';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgForm } from "@angular/forms";
 import { ModalController, LoadingController, ToastController, NavController } from "ionic-angular";
 import { Geolocation } from '@ionic-native/geolocation';
@@ -18,13 +20,15 @@ declare var cordova: any;
   selector: 'page-add-place',
   templateUrl: 'add-place.html'
 })
-export class AddPlacePage {
+export class AddPlacePage implements OnInit {
   location: Location = {
-    lat: 40.7624324,
-    lng: -73.9759827
+    lat: 19.692359099999997, 
+    lng: -103.4566299
   };
   locationIsSet = false;
   imageUrl = '';
+  actividades: ActivityInterface[];
+  activities: any;
 
   constructor(private modalCtrl: ModalController,
               private loadingCtrl: LoadingController,
@@ -34,7 +38,15 @@ export class AddPlacePage {
               private camera: Camera,
               private file: File,
               private authService: AuthService,
-              private navCtrl: NavController) {
+              private navCtrl: NavController,
+              private activityService: ActivityService
+              ) {
+  }
+  ngOnInit(){
+    this.activityService.all()
+      .subscribe(result => {
+        this.actividades = result;
+      });
   }
 
   ionViewCanEnter(): boolean{
@@ -62,7 +74,8 @@ export class AddPlacePage {
       "title": form.value.title, 
       "description": form.value.description, 
       "location": this.location, 
-      "imageUrl": this.imageUrl
+      "imageUrl": this.imageUrl,
+      "actividads": this.actividades
     }
 
     this.placesService.create(placevalue)
@@ -70,13 +83,18 @@ export class AddPlacePage {
           (response: any) => {
             if(response.id !== undefined) {
               alert("¡Has creado tu lugar correctamente!");
+
+                // http://localhost:3000/api/Places/5a7cecadf547b03468e1f936/actividads/rel/5a7cecf5f547b03468e1f937
+                console.log(this.activities);
+                console.log(this.actividades);
+
             } 
           });
 
     form.reset();
     this.location = {
-      lat: 40.7624324,
-      lng: -73.9759827
+      lat: 19.692359099999997, 
+      lng: -103.4566299
     };
     this.imageUrl = '';
     this.locationIsSet = false;
@@ -121,7 +139,9 @@ export class AddPlacePage {
         }
       );
   }
+  
 
+  /*
   onTakePhoto() {
     this.camera.getPicture({
       encodingType: this.camera.EncodingType.JPEG,
@@ -164,4 +184,5 @@ export class AddPlacePage {
         }
       );
   }
+  */
 }

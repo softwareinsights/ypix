@@ -19,14 +19,15 @@ import { PlacePage } from "../place/place";
 })
 export class HomePage implements OnInit {
   addPlacePage = AddPlacePage;
+
   // places: Place[] = [];
   places: PlaceInterface[] = [];
   locationIsSet: boolean;
 
   // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
   location: LocationInterface = {
-    lat: 40.7624324,
-    lng: -73.9759827
+    lat: 19.692359099999997, 
+    lng: -103.4566299
   };
 
   constructor(private modalCtrl: ModalController,
@@ -69,7 +70,9 @@ export class HomePage implements OnInit {
 
     this.placesService.fetchPlaces()
       .subscribe(
-        (places: PlaceInterface[]) => this.places = places
+        (places: PlaceInterface[]) => {
+          this.places = places;
+        } 
       );
  
    }
@@ -96,7 +99,7 @@ export class HomePage implements OnInit {
         error => {
           loader.dismiss();
           const toast = this.toastCtrl.create({
-            message: 'No pudimos tomar tu posición, porfavor ingresala manualmente!',
+            message: 'No pudimos tomar tu posición, porfavor ingrésala manualmente!',
             duration: 2500
           });
           toast.present();

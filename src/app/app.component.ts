@@ -40,16 +40,30 @@ export class MyApp {
       splashScreen.hide();
           // set our app's pages
     });
+
+    if (this.authService.isLoggedIn) {
+
+        this.pages = [
+        { title: 'Home', component: StartPage },
+        { title: 'Bienvenidos', component: WelcomePage },
+        { title: 'Actividades', component: ActivityPage },
+        { title: 'Completa tus datos', component: ComplatePage },
+        { title: 'Recuperar Contraseña', component: RecoverPage },
+        { title: 'Verificación', component: VerificationPage }
+      ];
+    } else {
       this.pages = [
-      { title: 'Home', component: StartPage },
-      { title: 'Bienvenidos', component: WelcomePage },
-      { title: 'Actividades', component: ActivityPage },
-      { title: 'Completa tus datos', component: ComplatePage },
-      { title: 'Recuperar Contraseña', component: RecoverPage },
-      { title: 'Verificación', component: VerificationPage },
-      { title: 'Login', component: LoginPage },
-      { title: 'Register', component: RegisterPage }
-    ];
+        { title: 'Home', component: StartPage },
+        { title: 'Bienvenidos', component: WelcomePage },
+        { title: 'Actividades', component: ActivityPage },
+        { title: 'Completa tus datos', component: ComplatePage },
+        { title: 'Recuperar Contraseña', component: RecoverPage },
+        { title: 'Verificación', component: VerificationPage },
+        { title: 'Login', component: LoginPage },
+        { title: 'Register', component: RegisterPage }
+      ];
+    }
+
   }
 
   presentToast(text: string) {

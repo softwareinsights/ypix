@@ -1,3 +1,4 @@
+import { ActivityService } from './../pages/activity/activity.service';
 import { StartPage } from './../pages/start/start';
 import { HomeCardsPage } from './../pages/home-cards/home-cards';
 import { NgModule, ErrorHandler } from '@angular/core';
@@ -89,7 +90,8 @@ import { RegisterService } from '../pages/register/register.service';
     PlacesService,
     Configuration,
     RegisterService,
-    AuthService
+    AuthService,
+    ActivityService
   ]
 })
 export class AppModule {

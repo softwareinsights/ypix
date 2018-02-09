@@ -9,7 +9,7 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
-      <button ion-item (click)="closeSession()">
+      <button *ngIf="this.authservice.isLoggedIn" ion-item (click)="closeSession()">
         Cerrar Sesión
       </button>
     </ion-list>
