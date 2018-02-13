@@ -67,6 +67,8 @@ export class HomePage implements OnInit {
             */
         
     });
+
+    
     
     this.locationIsSet = false;
   }
@@ -79,6 +81,10 @@ export class HomePage implements OnInit {
       );
  
    }
+
+   hola(){
+      alert('Funciono');
+  }
 
   locate() {
     const loader = this.loadingCtrl.create({

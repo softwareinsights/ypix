@@ -69,25 +69,7 @@
           </sebm-google-map>
         </ion-col>
       </ion-row>
-      <ion-row>
-        <ion-col text-center>
-          <h5>Toma una foto</h5>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <button
-            ion-button
-            icon-left
-            block
-            outline
-            type="button"
-            (click)="onTakePhoto()">
-            <ion-icon name="camera"></ion-icon>
-            Abrir Cámara
-          </button>
-        </ion-col>
-      </ion-row>
+  
       <ion-row *ngIf="imageUrl != ''">
         <ion-col>
           <img [src]="imageUrl">
