@@ -18,14 +18,14 @@
     </ion-row>
     <ion-row>
       <ion-col>
-          <ion-label fixed>Descripción</ion-label>
+          <ion-label fixed>DESCRIPCIÓN:</ion-label>
         <p>{{ place.description }}</p>
       </ion-col>
     </ion-row>
 
     <ion-row >
       <ion-col>
-          <ion-label fixed>Actividades</ion-label>
+          <ion-label fixed>ACTIVIDADES:</ion-label>
           <p *ngFor="let actividad of place.activities">
             <span>{{ actividad }}</span></p>
       </ion-col>
@@ -33,25 +33,25 @@
 
     <ion-row>
       <ion-col>
-          <ion-label fixed>Dirección</ion-label>
+          <ion-label fixed>DIRECCIÓN:</ion-label>
         <p>{{ place.direccion }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-          <ion-label fixed>Horarios</ion-label>
+          <ion-label fixed>HORARIOS</ion-label>
         <p>{{ place.horarios }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-          <ion-label fixed>¿Público?</ion-label>
+          <ion-label fixed>¿PÚBLICo?</ion-label>
         <p>{{ place.public ? 'Si' : 'No' }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-          <ion-label fixed>Costo</ion-label>
+          <ion-label fixed>COSTO:</ion-label>
         <p>{{ place.cost | currency: 'MXN' }}</p>
       </ion-col>
     </ion-row>

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
-
+import { NavParams, ViewController, NavController } from 'ionic-angular';
 import { Place } from "../../models/place";
 import { PlacesService } from "../../services/places";
+
 
 @Component({
   selector: 'page-place',
@@ -27,5 +27,7 @@ export class PlacePage {
     this.placesService.deletePlace(this.index)
       .subscribe(response => console.log("response", response));
     this.onLeave();
+
   }
+  
 }

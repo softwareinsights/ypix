@@ -42,12 +42,14 @@ export class ActivityPage implements OnInit {
       
     });
 
-    console.log("nuevoArreglo", nuevoArreglo);
+   // console.log("nuevoArreglo", nuevoArreglo);
 
     this.storage.set('Actividades', nuevoArreglo);
+    alert('Actividades Actualizadas con exito');
   }
   
   volver(){
-    this.navCtrl.pop();
+    alert('Volver atras');
+    //this.navCtrl.pop();
   }
 }
