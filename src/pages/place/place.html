@@ -18,9 +18,46 @@
     </ion-row>
     <ion-row>
       <ion-col>
+          <ion-label fixed>Descripción</ion-label>
         <p>{{ place.description }}</p>
       </ion-col>
     </ion-row>
+
+    <ion-row >
+      <ion-col>
+          <ion-label fixed>Actividades</ion-label>
+          <p *ngFor="let actividad of place.activities">
+            <span>{{ actividad }}</span></p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>Dirección</ion-label>
+        <p>{{ place.direccion }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>Horarios</ion-label>
+        <p>{{ place.horarios }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>¿Público?</ion-label>
+        <p>{{ place.public ? 'Si' : 'No' }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>Costo</ion-label>
+        <p>{{ place.cost | currency: 'MXN' }}</p>
+      </ion-col>
+    </ion-row>
+
+
+
     <ion-row>
       <ion-col>
         <sebm-google-map

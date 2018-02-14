@@ -11,6 +11,8 @@ import { File, Entry, FileError } from '@ionic-native/file';
 import { SetLocationPage } from "../set-location/set-location";
 import { Location } from "../../models/location";
 import { PlacesService } from "../../services/places";
+import { ActivityService } from '../activity/activity.service';
+import { ActivityInterface } from '../activity/activity.interface';
 
 declare var cordova: any;
 
@@ -19,6 +21,14 @@ declare var cordova: any;
   templateUrl: 'add-place.html'
 })
 export class AddPlacePage {
+
+  actividades: any;
+  public: boolean;
+  cost: number;
+  direccion: string;
+  horarios: string;
+
+
   location: Location = {
     lat: 40.7624324,
     lng: -73.9759827
@@ -34,7 +44,18 @@ export class AddPlacePage {
               private camera: Camera,
               private file: File,
               private authService: AuthService,
-              private navCtrl: NavController) {
+              private navCtrl: NavController,
+              private activityService: ActivityService) {
+  }
+  ngOnInit() {
+    this.getAllActivities();
+  }
+
+  getAllActivities() {
+    this.activityService.getAll()
+    .subscribe((result) => {
+      this.actividades = result;
+    })
   }
 
   ionViewCanEnter(): boolean{
@@ -58,12 +79,28 @@ export class AddPlacePage {
 
   onSubmit(form: NgForm) {
 
+    let nuevoArreglo = [];
+
+    this.actividades.forEach(actividad => {
+
+      if (actividad.visible) {
+        nuevoArreglo.push(actividad.nombre);
+      }
+      
+    });
+
     const placevalue: PlaceInterface = {
       "title": form.value.title, 
       "description": form.value.description, 
       "location": this.location, 
-      "imageUrl": this.imageUrl
+      "imageUrl": this.imageUrl,
+      "activities": nuevoArreglo,
+      "public": form.value.public,
+      "cost": form.value.cost,
+      "direccion": form.value.direccion,
+      "horarios": form.value.horarios
     }
+    console.log("placevalue", placevalue);
 
     this.placesService.create(placevalue)
       .subscribe(

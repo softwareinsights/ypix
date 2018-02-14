@@ -13,50 +13,16 @@
    <p text-center>Selecciona las actividades que deseas practicar</p>
   <ion-list>
  
-      <ion-item>
-          <ion-label>Futbol</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
+      <ion-item *ngFor="let actividad of actividades; let i = index;">
+          <ion-label>{{actividad.nombre}}</ion-label>
+          <ion-checkbox color="blue" [(ngModel)]="actividad.visible" checked="false" [ngModelOptions]="{standalone: true}"></ion-checkbox>
       </ion-item>
     
-      <ion-item>
-          <ion-label>Basquetball</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
-      </ion-item>
 
-      <ion-item>
-          <ion-label>Correr</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-          <ion-label>Cantar</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-          <ion-label>Nadar</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
-      </ion-item>
-    
-      <ion-item>
-          <ion-label>Bicicleta</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
-      </ion-item>
-
-      <ion-item>
-          <ion-label>Guitarra</ion-label>
-          <ion-checkbox color="blue" checked="false"></ion-checkbox>
-      </ion-item>
-<!--
-      <ion-item>
-          <ion-label stacked> Otro</ion-label>
-          <ion-input type="text"></ion-input>
-      </ion-item>
--->  
     </ion-list>
     <div padding text-center>
       <button ion-button (click)="volver()">Regresar</button>
-      <button ion-button (click)="siguiente()">Siguiente</button>
+      <button ion-button (click)="guardar()">Guardar</button>
     </div>
 
 </ion-content>

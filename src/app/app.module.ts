@@ -30,6 +30,7 @@ import { RecoverymailPage } from '../pages/recoverymail/recoverymail';
 import { Configuration } from './app.constants';
 import { AuthService } from '../pages/login/login.service';
 import { RegisterService } from '../pages/register/register.service';
+import { ActivityService } from '../pages/activity/activity.service';
 
 
 
@@ -89,7 +90,8 @@ import { RegisterService } from '../pages/register/register.service';
     PlacesService,
     Configuration,
     RegisterService,
-    AuthService
+    AuthService,
+    ActivityService
   ]
 })
 export class AppModule {

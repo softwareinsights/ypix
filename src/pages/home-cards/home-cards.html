@@ -26,7 +26,10 @@
           <ion-card-title>
             {{ place.title }}
           </ion-card-title>
-          <p>{{ place.description }}</p>
+          <span *ngFor="let actividad of place.activities">
+            <i> {{ actividad }} </i>
+          </span>
+
         </ion-card-content>
       </ion-card>
 

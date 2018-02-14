@@ -12,6 +12,10 @@
 
 <ion-content padding>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+
+
+
     <ion-list>
       <ion-item>
         <ion-label fixed>Nombre</ion-label>
@@ -30,6 +34,38 @@
           required></ion-textarea>
       </ion-item>
     </ion-list>
+
+    <ion-item>
+        <ion-label fixed>Dirección</ion-label>
+        <ion-input
+          type="text"
+          placeholder="..."
+          name="direccion"
+          ngModel></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Horarios</ion-label>
+        <ion-input
+          type="text"
+          placeholder="12:12am. - 15:30pm."
+          name="horarios"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>¿Es público?</ion-label>
+          <ion-checkbox color="blue" ngModel name="public" checked="false"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Costo de entrada</ion-label>
+        <ion-input
+          type="text"
+          placeholder="100"
+          name="cost"
+          ngModel
+          required ></ion-input>
+      </ion-item>
+
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -70,6 +106,17 @@
         </ion-col>
       </ion-row>
   
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item *ngFor="let actividad of actividades; let i = index;">
+                <ion-label>{{actividad.nombre}}</ion-label>
+                <ion-checkbox color="blue" [(ngModel)]="actividad.visible" checked="false" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
       <ion-row *ngIf="imageUrl != ''">
         <ion-col>
           <img [src]="imageUrl">
