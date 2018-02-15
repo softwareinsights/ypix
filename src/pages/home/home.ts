@@ -27,11 +27,11 @@ export class HomePage implements OnInit {
   actividadesDeStorage: any[];
 
 
-  // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
-  location: LocationInterface = {
-    lat: 19.692359099999997,
-    lng: -103.4566299
-  };
+    // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
+    location: LocationInterface = {
+      lat: 40.7624324,
+      lng: -73.9759827
+    };
 
   constructor(private modalCtrl: ModalController,
               private platform: Platform,
@@ -41,9 +41,6 @@ export class HomePage implements OnInit {
               private toastCtrl: ToastController,
               private storage: Storage) {
       platform.ready().then(() => {
-
-        this.locationIsSet = true;
-        /*
 
         this.storage.get('lat').then(
           latitude => {
@@ -67,12 +64,8 @@ export class HomePage implements OnInit {
           }
         );
         
-
-            */
-
-            
     });
-
+    
     this.locationIsSet = false;
   }
 
