@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+    <span>Recuperar Contraseña</span>
+    </ion-title>
+  </ion-navbar>
+</ion-header> 
+
+<ion-content padding>
+
+
+   <ion-item class="fondo">
+        <ion-label stacked>Correo Electrónico</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <div padding>
+            <button ion-button full (click)="enviar">Enviar</button>
+      </div>
+    
+</ion-content>

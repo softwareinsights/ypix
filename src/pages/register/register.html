@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title text-center>
+        <h1>REGISTRO</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+   
+  <ion-list>
+    
+      <ion-item>
+        <ion-label stacked>Nombre de Usuario</ion-label>
+        <ion-input [(ngModel)]="username"  type="text"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label stacked>Nombre</ion-label>
+        <ion-input  [(ngModel)]="realm" type="text"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Correo Electronico</ion-label>
+          <ion-input [(ngModel)]="email" type="email"></ion-input>
+        </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Contraseña</ion-label>
+          <ion-input [(ngModel)]="password" type="password"></ion-input>
+        </ion-item>
+<!--
+      <ion-item>
+          <ion-label stacked>Confirmar Contraseña</ion-label>
+          <ion-input [(ngModel)]="repassword" type="password"></ion-input>
+       </ion-item>
+--> 
+    </ion-list>
+
+    <div padding text-center>
+     <!-- <button ion-button (click)="volver()">Regresar</button>-->
+
+      <button ion-button full (click)="onSubmit()">crear cuenta</button>
+    </div>
+</ion-content>

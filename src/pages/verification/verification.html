@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+        <h1 text-center>PIXER</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="fondo">
+   <p text-center>Verificacion de Información</p>
+  <ion-list>
+    
+      <ion-item>
+          <ion-icon name="md-contact" padding> Usuario: </ion-icon>
+      </ion-item>
+    
+      <ion-item>
+          <ion-icon name="md-mail" padding> Correo:</ion-icon>
+      </ion-item>
+
+      <ion-item>
+          <ion-icon name="md-bicycle" padding> Actividades</ion-icon>
+      </ion-item>
+    
+      <ion-item>
+          <ion-icon name="ios-thumbs-up" padding> Actividades de Interes</ion-icon>
+      </ion-item>
+    </ion-list>
+
+    <div padding text-center>
+      <button ion-button (click)="volver()" class="btn">Regresar</button>
+      <button ion-button (click)="siguiente()" class="btn">Finalizar</button>
+    </div>
+
+    
+</ion-content>

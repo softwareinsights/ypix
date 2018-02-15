@@ -1,0 +1,22 @@
+<ion-menu [content]="content" >
+  <ion-header>
+    <ion-toolbar>
+      <ion-title text-center> <h1>YPIX</h1> </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content >
+    <ion-list *ngIf="!this.authService.isLoggedIn">
+
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)" class="buttonMenu">
+        <ion-icon name="{{p.icon}}"></ion-icon>  {{ p.title  }}  
+      </button>
+      <button *ngIf="this.authservice.isLoggedIn" ion-item (click)="closeSession()">
+        Cerrar Sesión
+      </button>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>
+
+<ion-nav #content [root]="rootPage"></ion-nav>

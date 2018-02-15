@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title>
+        <h1>Completa Tus Datos</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="fondo">
+    
+  <ion-list>
+      <ion-item>
+        <ion-label stacked>Nombre</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label stacked>Correo</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+          <ion-label stacked>Telefono</ion-label>
+          <ion-input type="tel"></ion-input>
+        </ion-item>
+
+        <p text-center padding>Fecha de Nacimiento</p>
+
+        <ion-item>
+            <ion-label stacked>Dia | Mes | Año</ion-label>
+            <ion-input type="date"></ion-input>
+          </ion-item>
+ <!--         
+          <ion-item>
+              <ion-label stacked>Sexo</ion-label>
+              <ion-select type="select">
+                <ion-option>Masculino</ion-option>s
+                <ion-option>Femenino</ion-option>
+              </ion-select>
+            </ion-item>
+-->    
+    </ion-list>
+
+    <div padding text-center>
+      <button ion-button (click)="volver()">Cancelar</button>
+      <button ion-button>Guardar</button>
+    </div>
+</ion-content>

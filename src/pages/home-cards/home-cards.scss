@@ -1,0 +1,17 @@
+page-home {
+  sebm-google-map {
+   /* background-color: #212121;*/
+    display: block;
+    height: 50vh;
+    width: 100%;
+  }
+
+  ion-card{
+    background-color:#4CAF50 !important;
+    border-radius: 10px !important;
+  }
+
+  ion-card-title,p{
+    color:white !important;
+  }
+}

@@ -1,0 +1,162 @@
+
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>
+      <h1 text-center>Agrega un lugar</h1>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+
+
+
+
+    <ion-list>
+      <ion-item>
+        <ion-label fixed>Nombre</ion-label>
+        <ion-input
+          type="text"
+          placeholder="Nombre del lugar"
+          name="title"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Descripción</ion-label>
+        <ion-textarea
+          name="description"
+          ngModel
+          required></ion-textarea>
+      </ion-item>
+    </ion-list>
+<!--
+    <ion-item>
+        <ion-label fixed>Dirección</ion-label>
+        <ion-input
+          type="text"
+          placeholder="..."
+          name="direccion"
+          ngModel></ion-input>
+      </ion-item>
+-->      
+      <ion-item>
+        <ion-label fixed>Horarios</ion-label>
+        <ion-input
+          type="text"
+          placeholder="12:12am. - 15:30pm."
+          name="horarios"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>¿Es público?</ion-label>
+          <ion-checkbox color="blue" ngModel name="public" checked="false"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Costo</ion-label>
+        <ion-input
+          type="text"
+          placeholder="100"
+          name="cost"
+          ngModel
+          required ></ion-input>
+      </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <button
+            ion-button
+            block
+            outline
+            type="button"
+            icon-left
+            (click)="onLocate()">
+            <ion-icon name="locate"></ion-icon>
+            Localízame
+          </button>
+        </ion-col>
+        <ion-col>
+          <button
+            ion-button
+            block
+            outline
+            type="button"
+            icon-left
+            (click)="onOpenMap()">
+            <ion-icon name="map"></ion-icon>
+            Seleccionar del Mapa
+          </button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="locationIsSet">
+        <ion-col>
+          <sebm-google-map
+            [latitude]="location.lat"
+            [longitude]="location.lng"
+            [zoom]="16">
+            <sebm-google-map-marker
+              [latitude]="location.lat"
+              [longitude]="location.lng"></sebm-google-map-marker>
+          </sebm-google-map>
+        </ion-col>
+      </ion-row>
+      <!--
+      <ion-row>
+        <ion-col text-center>
+          <h5>Toma una foto</h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item *ngFor="let actividad of actividades; let i = index;">
+                <ion-label>{{actividad.nombre}}</ion-label>
+                <ion-checkbox color="blue" [(ngModel)]="actividad.visible" checked="false" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="imageUrl != ''">
+        <ion-col>
+          <img [src]="imageUrl">
+        </ion-col>
+      </ion-row>
+      -->
+
+      <ion-row>
+        <ion-col>
+          <h1 text-center>ACTIVIDADES</h1>
+          <p text-center>Selecciona las actividades que se practican en este lugar</p>
+          <ion-list>
+            <ion-item *ngFor="let actividad for actividades">
+                <ion-label>{{actividad.nombre}}</ion-label>
+               
+            </ion-item>
+            <!-- (value)="{{actividad.id}}"
+             <ion-checkbox [(ngModel)]="activities"  color="blue" checked="false"></ion-checkbox> -->
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button
+            ion-button
+            color="secondary"
+            block
+            type="submit"
+            [disabled]="!f.valid || !locationIsSet">
+            Agregar Lugar
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

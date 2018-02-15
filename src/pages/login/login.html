@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle icon-only>
+      <ion-icon name='menu'></ion-icon>
+    </button>
+    <ion-title text-center>
+      <h1>YPIX</h1>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list >
+    
+      <ion-item >
+        <ion-label stacked>Email</ion-label>
+        <ion-input [(ngModel)]="email" type="email"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label stacked>Contraseña</ion-label>
+        <ion-input [(ngModel)]="password" type="password"></ion-input>
+      </ion-item>
+    
+    </ion-list>
+
+    <div padding>
+      <button ion-button full (click)="onSubmit()" >INICIAR SESION</button>
+    </div>
+
+    <div padding>
+      <button ion-button full (click)="registro()">REGISTRATE</button>
+    </div>
+<!--
+    <div padding>
+        <button ion-button clear full (click)="olvide()" class="btnS">  ¿Olvidaste tu contraseña? </button>
+      </div>
+-->      
+</ion-content>
