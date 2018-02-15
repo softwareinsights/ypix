@@ -107,9 +107,6 @@ export class HomePage implements OnInit {
  
    }
 
-   hola(){
-      alert('Funciono');
-  }
 
   locate() {
     const loader = this.loadingCtrl.create({
