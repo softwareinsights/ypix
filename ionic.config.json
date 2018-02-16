@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
-  "name": "ypix",
-=======
   "name": "ionic2-course",
->>>>>>> cambio-master
   "app_id": "",
   "integrations": {
     "cordova": {}
