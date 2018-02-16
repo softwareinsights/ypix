@@ -106,12 +106,7 @@
           </sebm-google-map>
         </ion-col>
       </ion-row>
-      <!--
-      <ion-row>
-        <ion-col text-center>
-          <h5>Toma una foto</h5>
-        </ion-col>
-      </ion-row>
+  
       <ion-row>
         <ion-col>
           <ion-list>
@@ -128,23 +123,6 @@
           <img [src]="imageUrl">
         </ion-col>
       </ion-row>
-      -->
-
-      <ion-row>
-        <ion-col>
-          <h1 text-center>ACTIVIDADES</h1>
-          <p text-center>Selecciona las actividades que se practican en este lugar</p>
-          <ion-list>
-            <ion-item *ngFor="let actividad for actividades">
-                <ion-label>{{actividad.nombre}}</ion-label>
-               
-            </ion-item>
-            <!-- (value)="{{actividad.id}}"
-             <ion-checkbox [(ngModel)]="activities"  color="blue" checked="false"></ion-checkbox> -->
-          </ion-list>
-        </ion-col>
-      </ion-row>
-
       <ion-row>
         <ion-col>
           <button

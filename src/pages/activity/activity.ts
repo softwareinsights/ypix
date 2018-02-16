@@ -1,10 +1,10 @@
-import { StartPage } from './../start/start';
-import { Storage } from '@ionic/storage';
-import { ActivityService } from './activity.service';
-import { ActivityInterface } from './activity.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { VerificationPage } from '../verification/verification';
+import { ActivityService } from './activity.service';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
+import { ActivityInterface } from './activity.interface';
+import { Storage } from '@ionic/storage/es2015/storage';
 
 @Component({
   selector: 'page-activity',

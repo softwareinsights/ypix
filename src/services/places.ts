@@ -20,8 +20,6 @@ export class PlacesService {
   // private places: Place[] = [];
   private places: PlaceInterface[] = [];
 
-  private storage_places: any[] = [];
-  
   private headers: Headers;
   private actionUrl: string;
 
@@ -58,60 +56,7 @@ export class PlacesService {
           .map((response: Response) => <PlaceInterface>response.json())
           .catch(this.handleError)
           .do((places: PlaceInterface[]) => {
-
-
-              // recuperar lo de Storage
-              this.storage.get("Actividades")
-                .then(result => {
-                  this.storage_places = result;
-
-
-                  console.log("this.storage_places", this.storage_places);
-                  console.log("places", places);
-
-                  // continuar validado todos los lugares con cada lugar de storage
-                  let nuevoPlaces = [];
-
-                  let actividadesPorLugar = [];
-
-                  // barrer places, todos los lugares
-                  places.forEach(lugar => {
-
-
-                    console.log("lugar", lugar);
-
-                    // actividades por cada lugar
-                    let i = 0;             
-                    lugar.actividads.forEach(actividadporlugar => {
-                      actividadesPorLugar[i] = actividadporlugar.id;
-                      i++;
-                    });
-
-
-                    console.log("actividadesPorLugar", actividadesPorLugar);
-
-                    // comparación y validación con lo que tenemos en localstorage
-                    actividadesPorLugar.forEach(actividadporlugar => {
-
-                      
-                        console.log("this.storage_places.indexOf(actividadporlugar)", this.storage_places.indexOf(actividadporlugar));
-
-                        if (this.storage_places.indexOf(actividadporlugar) > -1) {
-                          // guardar en un nuevo arreglo
-                          nuevoPlaces.push(lugar);
-
-                        }
-                        
-                    });
- 
-
-                  });
-
-                  this.places = nuevoPlaces;
-                });
-                 
-
-              this.places = places != null ? places : [];
+            this.places = places != null ? places : [];
           });
   }
 
@@ -119,7 +64,13 @@ export class PlacesService {
 
     const place = this.places[index];
 
+    console.log("index", index);
+    console.log("this.places", this.places);
+    console.log("place", place);
+
     this.actionUrl = `${this._configuration.ServerWithApiUrl}Places/${place.id}`;
+
+    console.log("actionUrl", this.actionUrl);
 
     return this._http.delete(this.actionUrl, { headers: this.headers })
         .map((response: Response) => <any>response.json())

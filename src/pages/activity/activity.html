@@ -10,18 +10,19 @@
 </ion-header>
 
 <ion-content padding>
-  <h1 text-center>ACTIVIDADES</h1>
-  <p text-center>Selecciona las actividades que deseas practicar</p>
+   <p text-center>Selecciona las actividades que deseas practicar</p>
   <ion-list>
-    <ion-item *ngFor="let actividad for actividades">
-        <ion-label>{{actividad.nombre}}</ion-label>
-       
-    </ion-item>
-    <!-- (checked)="activities" value="{{actividad.id}}" 
-     <ion-checkbox [(ngModel)]="activities"  color="blue" checked="false"></ion-checkbox>-->
-  </ion-list>
-  <div padding text-center>
-    <button ion-button (click)="volver()">Regresar</button>
-    <button ion-button (click)="siguiente()">Siguiente</button>
-  </div>
+ 
+      <ion-item *ngFor="let actividad of actividades; let i = index;">
+          <ion-label>{{actividad.nombre}}</ion-label>
+          <ion-checkbox color="blue" [(ngModel)]="actividad.visible" checked="false" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+      </ion-item>
+    
+
+    </ion-list>
+    <div padding text-center>
+      <!--<button ion-button (click)="volver()">Regresar</button>-->
+      <button ion-button full (click)="guardar()">Guardar</button>
+    </div>
+
 </ion-content>

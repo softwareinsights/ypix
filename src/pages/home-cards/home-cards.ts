@@ -14,7 +14,7 @@ import { PlacesService } from "../../services/places";
 import { PlacePage } from "../place/place";
 
 @Component({
-  selector: 'page-home-cards',
+  selector: 'page-home',
   templateUrl: 'home-cards.html'
 })
 export class HomeCardsPage implements OnInit {
@@ -47,13 +47,14 @@ export class HomeCardsPage implements OnInit {
 /*
         this.storage.get('lat').then(
           latitude => {
-            if (latitude !== null)  {
+          if (latitude !== null)  {
+
               this.storage.get('lng').then(
                 longitude => {
-                  if (longitude !== null)  {
-                    this.location.lng = longitude;
-                    this.location.lat = latitude;
-                    this.locationIsSet = true;
+                if (longitude !== null)  {
+                  this.location.lng = longitude;
+                  this.location.lat = latitude;
+                  this.locationIsSet = true;
 
                   } else {
                     this.locate();
@@ -99,6 +100,7 @@ export class HomeCardsPage implements OnInit {
 
         }
       );
+ 
    }
 
   locate() {
@@ -123,7 +125,7 @@ export class HomeCardsPage implements OnInit {
         error => {
           loader.dismiss();
           const toast = this.toastCtrl.create({
-            message: 'No pudimos tomar tu posición, porfavor ingrésala manualmente!',
+            message: 'No pudimos tomar tu posición, porfavor ingresala manualmente!',
             duration: 2500
           });
           toast.present();

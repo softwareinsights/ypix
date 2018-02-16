@@ -1,7 +1,6 @@
-import { ActivityInterface } from './../activity/activity.interface';
 
 import { LocationInterface } from "./location.interface";
-
+import { ActivityInterface } from "../activity/activity.interface";
 
 export interface PlaceInterface {
     id?: string;
