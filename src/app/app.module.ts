@@ -59,7 +59,7 @@ import { ActivityService } from '../pages/activity/activity.service';
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyDe1i2PRJbqp7s3PbEv_xS3-nEiSS0QFxQ'
+      apiKey: 'AIzaSyB_NJd4aokHv7eqJlz3i_ozgCB5xSQnfCQ'
     })
   ],
   bootstrap: [IonicApp],
