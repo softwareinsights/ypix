@@ -23,7 +23,6 @@ export class RegisterPage {
 
     onSubmit(): void {
       const values: RegisterInterface = {
-        'realm': this.realm,
         'email': this.email,
         'password': this.password,
         'username':this.username

@@ -14,4 +14,9 @@ page-home {
   ion-card-title,p{
     color:white !important;
   }
+
+  ion-card:hover{
+    background-color:#388e3c !important;
+    cursor: pointer;
+  }
 }

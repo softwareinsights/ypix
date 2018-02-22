@@ -44,7 +44,7 @@ export class HomeCardsPage implements OnInit {
       platform.ready().then(() => {
         
         this.locationIsSet = true;
-/*
+
         this.storage.get('lat').then(
           latitude => {
           if (latitude !== null)  {
@@ -66,20 +66,34 @@ export class HomeCardsPage implements OnInit {
             } 
           }
         );
-        */
+        /**/
         
     });
     
     this.locationIsSet = false;
+    this.places = [];
       
   }
 
   ngOnInit() { 
 
+    // Sacar directamete de storage
+    
+    this.storage.get("Places")
+    .then(places => {
+      this.places = places;
+      return;
+    });
+
+
     this.placesService.fetchPlaces()
       .subscribe(
         (places: PlaceInterface[]) => {
           
+          // Primero llena todos los lugares
+          this.places = places;
+
+          // Si encuentra un filtro de actividades...
           this.storage.get("Actividades")
           .then(actividades => {
             this.actividadesDeStorage = actividades || [];
@@ -96,7 +110,8 @@ export class HomeCardsPage implements OnInit {
   
             nuevoArregloLugares = Array.from(new Set(nuevoArregloLugares));
             this.places = nuevoArregloLugares;
-          
+
+            this.storage.set("Places", this.places);
           });
 
         }

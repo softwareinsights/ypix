@@ -113,7 +113,7 @@
       <ion-row>
         <ion-col>
           <ion-list>
-            <ion-item *ngFor="let actividad of actividades; let i = index;">
+            <ion-item *ngFor="let actividad of actividades; let i = index;" class="hover">
                 <ion-label>{{actividad.nombre}}</ion-label>
                 <ion-checkbox color="blue" [(ngModel)]="actividad.visible" checked="false" [ngModelOptions]="{standalone: true}"></ion-checkbox>
             </ion-item>

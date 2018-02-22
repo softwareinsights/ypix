@@ -57,7 +57,7 @@ export class MyApp {
     this.pagesL = [
 
       { title: 'Inicio', component: StartPage, icon:'home' },
-      { title: 'Actividades', component: ActivityPage, icon:'ios-bicycle' }
+      { title: ' Mis Actividades', component: ActivityPage, icon:'ios-bicycle' }
     ];
    
   }
