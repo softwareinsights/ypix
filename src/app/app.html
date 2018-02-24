@@ -9,7 +9,7 @@
     <ion-list *ngIf="!this.authService.isLoggedIn">
 
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)" class="buttonMenu">
-        <ion-icon name="{{p.icon}}"></ion-icon>  {{ p.title  }}  
+        <ion-icon name="{{p.icon}}"></ion-icon> <span> {{ p.title  }}  </span>  
       </button>
 
     </ion-list>
@@ -17,7 +17,7 @@
     <ion-list *ngIf="this.authService.isLoggedIn">
         
       <button ion-item *ngFor="let pl of pagesL" (click)="openPage(pl)" class="buttonMenu"> 
-         <ion-icon name="{{pl.icon}}"></ion-icon> {{pl.title}}
+         <ion-icon name="{{pl.icon}}"></ion-icon> <span> {{pl.title}}</span> 
       </button> 
 
       <button ion-item (click)="closeSession()" class="buttonLogOut">
