@@ -22,13 +22,13 @@ export class HomeCardsPage implements OnInit {
   // places: Place[] = [];
   places: PlaceInterface[] = [];
   locationIsSet: boolean;
+  actividadesDeStorage: any[];
 
-  // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
-  location: LocationInterface = {
-    lat: 19.692359099999997, 
-    lng: -103.4566299
-  };
-
+    // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
+    location: LocationInterface = {
+      lat: 40.7624324,
+      lng: -73.9759827
+    };
   constructor(private modalCtrl: ModalController,
               private platform: Platform,
               private placesService: PlacesService,
@@ -37,7 +37,6 @@ export class HomeCardsPage implements OnInit {
               private toastCtrl: ToastController,
               private storage: Storage) {
       platform.ready().then(() => {
-
         this.storage.get('lat').then(
           latitude => {
             if (latitude !== null)  {
@@ -67,7 +66,28 @@ export class HomeCardsPage implements OnInit {
   ngOnInit() { 
     this.placesService.fetchPlaces()
       .subscribe(
-        (places: PlaceInterface[]) => this.places = places
+        (places: PlaceInterface[]) => {
+          
+          this.storage.get("Actividades")
+          .then(actividades => {
+            this.actividadesDeStorage = actividades || [];
+            
+            let nuevoArregloLugares = [];
+            places.forEach(lugar => {
+              let actividadesDeLugar = lugar.activities;
+              actividadesDeLugar.forEach(actividadDeLugar => {
+                if (this.actividadesDeStorage.indexOf(actividadDeLugar) > -1) {
+                  nuevoArregloLugares.push(lugar);
+                }
+              });
+            });
+  
+            nuevoArregloLugares = Array.from(new Set(nuevoArregloLugares));
+            this.places = nuevoArregloLugares;
+          
+          });
+
+        }
       );
    }
 

@@ -20,7 +20,13 @@ declare var cordova: any;
   selector: 'page-add-place',
   templateUrl: 'add-place.html'
 })
+
 export class AddPlacePage implements OnInit {
+  
+  public: boolean;
+  cost: number;
+  direccion: string;
+  horarios: string;
   location: Location = {
     lat: 19.692359099999997, 
     lng: -103.4566299
@@ -39,14 +45,17 @@ export class AddPlacePage implements OnInit {
               private file: File,
               private authService: AuthService,
               private navCtrl: NavController,
-              private activityService: ActivityService
-              ) {
+              private activityService: ActivityService) {
   }
-  ngOnInit(){
-    this.activityService.all()
-      .subscribe(result => {
-        this.actividades = result;
-      });
+  ngOnInit() {
+    this.getAllActivities();
+  }
+
+  getAllActivities() {
+    this.activityService.getAll()
+    .subscribe((result) => {
+      this.actividades = result;
+    })
   }
 
   ionViewCanEnter(): boolean{
@@ -70,13 +79,28 @@ export class AddPlacePage implements OnInit {
 
   onSubmit(form: NgForm) {
 
+    let nuevoArreglo = [];
+
+    this.actividades.forEach(actividad => {
+
+      if (actividad.visible) {
+        nuevoArreglo.push(actividad.nombre);
+      }
+      
+    });
+
     const placevalue: PlaceInterface = {
       "title": form.value.title, 
       "description": form.value.description, 
       "location": this.location, 
       "imageUrl": this.imageUrl,
-      "actividads": this.actividades
+      "activities": nuevoArreglo,
+      "public": form.value.public,
+      "cost": form.value.cost,
+      "direccion": form.value.direccion,
+      "horarios": form.value.horarios
     }
+    console.log("placevalue", placevalue);
 
     this.placesService.create(placevalue)
       .subscribe(
@@ -139,7 +163,6 @@ export class AddPlacePage implements OnInit {
         }
       );
   }
-  
 
   /*
   onTakePhoto() {

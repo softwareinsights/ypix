@@ -4,34 +4,53 @@ import { ActivityService } from './activity.service';
 import { ActivityInterface } from './activity.interface';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from 'ionic-angular';
-
-
+import { VerificationPage } from '../verification/verification';
 
 @Component({
   selector: 'page-activity',
   templateUrl: 'activity.html'
 })
-export class ActivityPage implements OnInit{
+
+export class ActivityPage implements OnInit {
 
   actividades: ActivityInterface[];
   activities: any;
 
-  constructor(public navCtrl: NavController, private service: ActivityService, private storage: Storage) {
+  constructor(
+    public navCtrl: NavController, 
+    private activityService: ActivityService,
+    private storage: Storage) {
   }
-  ngOnInit(){
-    this.service.all()
-      .subscribe(result => {
-        this.actividades = result;
-      });
+
+  ngOnInit() {
+    this.getAll();
   }
-  
-  siguiente(){
-    console.log("Actividades", this.actividades);
-    console.log("activities", this.activities);
-    this.storage.set("Actividades", this.actividades)
+
+  getAll() {
+    this.activityService.getAll()
+    .subscribe((result) => {
+      this.actividades = result;
+    })
+  }
+
+  guardar(){
+
+    let nuevoArreglo = [];
+    this.actividades.forEach(actividad => {
+      if (actividad.visible) {
+        nuevoArreglo.push(actividad.nombre);
+      }
+      
+    });
+
+   // console.log("nuevoArreglo", nuevoArreglo);
+
+    this.storage.set('Actividades', nuevoArreglo);
+    alert('Actividades Actualizadas con exito');
   }
   
   volver(){
-    this.navCtrl.pop();
+    alert('Volver atras');
+    //this.navCtrl.pop();
   }
 }

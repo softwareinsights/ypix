@@ -4,7 +4,8 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>{{ place.title }}</ion-title>
+    <ion-title>
+     <span>{{ place.title }} </span> </ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -17,9 +18,47 @@
     </ion-row>
     <ion-row>
       <ion-col>
+          <ion-label fixed>DESCRIPCIÓN:</ion-label>
         <p>{{ place.description }}</p>
       </ion-col>
     </ion-row>
+
+    <ion-row >
+      <ion-col>
+          <ion-label fixed>ACTIVIDADES:</ion-label>
+          <p *ngFor="let actividad of place.activities">
+            <span>{{ actividad }}</span></p>
+      </ion-col>
+    </ion-row>
+<!--
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>DIRECCIÓN:</ion-label>
+        <p>{{ place.direccion }}</p>
+      </ion-col>
+    </ion-row>
+  -->   
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>HORARIOS</ion-label>
+        <p>{{ place.horarios }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>¿PÚBLICO?</ion-label>
+        <p>{{ place.public ? 'Si' : 'No' }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-label fixed>COSTO:</ion-label>
+        <p>{{ place.cost | currency: 'MXN' }}</p>
+      </ion-col>
+    </ion-row>
+
+
+
     <ion-row>
       <ion-col>
         <sebm-google-map
@@ -53,8 +92,7 @@
         <button
           ion-button
           block
-          color="danger"
-          (click)="onDelete()">Eliminar</button>
+          (click)="onDelete()" class="btnDanger">Eliminar</button>
       </ion-col>
     </ion-row>
   </ion-grid>

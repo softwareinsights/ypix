@@ -14,6 +14,10 @@ import { Platform, MenuController, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import {PlacePage} from '../pages/place/place';
+import {AddPlacePage} from '../pages/add-place/add-place';
+import {HomeCardsPage} from '../pages/home-cards/home-cards';
+import {SetLocationPage} from '../pages/set-location/set-location';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,8 +26,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   rootPage = StartPage;
-  pages: Array<{title: string, component: any}>;
-
+  pages: Array<any>;
+  pagesL: Array<any>;
 
   constructor(
       public menu: MenuController,
@@ -41,29 +45,18 @@ export class MyApp {
           // set our app's pages
     });
 
-    if (this.authService.isLoggedIn) {
+    this.pages = [
+      { title: 'Inicio', component: StartPage, icon:'home' },
+      { title: 'Actividades', component: ActivityPage, icon:'ios-bicycle' },       
+      { title: 'Iniciar Sesión', component: LoginPage, icon:'ios-log-in' },
+      { title: 'Registrate', component: RegisterPage, icon:'ios-create' }
+    ];
 
-        this.pages = [
-        { title: 'Home', component: StartPage },
-        { title: 'Bienvenidos', component: WelcomePage },
-        { title: 'Actividades', component: ActivityPage },
-        { title: 'Completa tus datos', component: ComplatePage },
-        { title: 'Recuperar Contraseña', component: RecoverPage },
-        { title: 'Verificación', component: VerificationPage }
-      ];
-    } else {
-      this.pages = [
-        { title: 'Home', component: StartPage },
-        { title: 'Bienvenidos', component: WelcomePage },
-        { title: 'Actividades', component: ActivityPage },
-        { title: 'Completa tus datos', component: ComplatePage },
-        { title: 'Recuperar Contraseña', component: RecoverPage },
-        { title: 'Verificación', component: VerificationPage },
-        { title: 'Login', component: LoginPage },
-        { title: 'Register', component: RegisterPage }
-      ];
-    }
-
+    this.pagesL = [
+      { title: 'Inicio', component: StartPage, icon:'home' },
+      { title: 'Actividades', component: ActivityPage, icon:'ios-bicycle' }
+    ];
+   
   }
 
   presentToast(text: string) {
@@ -81,12 +74,15 @@ export class MyApp {
     // close the menu when clicking a link from the menu
     this.menu.close();
     this.authService.logout();
+    this.nav.setRoot(this.pages[2].component);
   }
 
   openPage(page) {
+   
     // close the menu when clicking a link from the menu
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
   }
+  
 }

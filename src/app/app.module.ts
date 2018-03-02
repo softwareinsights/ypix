@@ -31,6 +31,7 @@ import { RecoverymailPage } from '../pages/recoverymail/recoverymail';
 import { Configuration } from './app.constants';
 import { AuthService } from '../pages/login/login.service';
 import { RegisterService } from '../pages/register/register.service';
+import { ActivityService } from '../pages/activity/activity.service';
 
 
 
@@ -59,7 +60,7 @@ import { RegisterService } from '../pages/register/register.service';
     IonicStorageModule.forRoot(),
     IonicModule.forRoot(MyApp),
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAgdv3BULjX0nTwSiCFF48sBZxqhyEb-zA'
+      apiKey: 'AIzaSyDe1i2PRJbqp7s3PbEv_xS3-nEiSS0QFxQ'
     })
   ],
   bootstrap: [IonicApp],

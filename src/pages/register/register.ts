@@ -33,8 +33,9 @@ export class RegisterPage {
             (response: any) => {
               if(response.id !== undefined) {
                 alert("¡Te has registrado correctamente!");
-                this.navCtrl.push(LoginPage);
+               
               } 
             });
     }
 }
+// this.navCtrl.push(LoginPage);

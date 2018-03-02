@@ -30,7 +30,13 @@ export class AuthService {
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
 
         this.userName = '';
-        this.isLoggedIn = false;
+
+        this.storage.get('isLoggedIn')
+            .then(result => {
+
+                this.isLoggedIn = result;
+                
+            });
     }
 
     login(values: LoginInterface): Observable<any> {
@@ -46,6 +52,7 @@ export class AuthService {
                 } else {
                     this.isLoggedIn = false;
                 }
+               // this.routes.arrayLogin(); 
                 return this.isLoggedIn;
             })
             .catch((error) => this.handleError(error));
@@ -64,6 +71,8 @@ export class AuthService {
         return Observable.throw(this.isLoggedIn);
 
     }
+
+    
 
 
 }

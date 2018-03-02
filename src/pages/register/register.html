@@ -3,8 +3,8 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>
-        <h1>YPIX | Registro</h1>
+    <ion-title text-center>
+        <h1>REGISTRO</h1>
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -32,17 +32,17 @@
           <ion-label stacked>Contraseña</ion-label>
           <ion-input [(ngModel)]="password" type="password"></ion-input>
         </ion-item>
-
+<!--
       <ion-item>
           <ion-label stacked>Confirmar Contraseña</ion-label>
           <ion-input [(ngModel)]="repassword" type="password"></ion-input>
-        </ion-item>
-  
+       </ion-item>
+--> 
     </ion-list>
 
     <div padding text-center>
-      <button ion-button (click)="volver()">Regresar</button>
+     <!-- <button ion-button (click)="volver()">Regresar</button>-->
 
-      <button ion-button (click)="onSubmit()">Siguiente</button>
+      <button ion-button full (click)="onSubmit()">crear cuenta</button>
     </div>
 </ion-content>

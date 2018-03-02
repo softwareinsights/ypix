@@ -6,14 +6,15 @@ import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { Configuration } from './../../app/app.constants';
-
 import { ActivityInterface } from './activity.interface';
+
 
 @Injectable()
 export class ActivityService {
-    
     private actionUrl: string;
     private headers: Headers;
+    endpoint: string;
+    actividades: ActivityInterface[];
 
     constructor(
         private _http: Http, 
@@ -22,22 +23,19 @@ export class ActivityService {
 
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json; charset=UTF-8');
+        this.endpoint = `${this._configuration.ServerWithApiUrl}/Actividades`;
     }
 
-    all(): Observable<ActivityInterface[]>  {
-        this.actionUrl = `${this._configuration.ServerWithApiUrl}Actividades`;
-        return this._http.get(this.actionUrl, { headers: this.headers })
-            .map((response: Response) => <ActivityInterface>response.json())
-            .catch(this.handleError);
+    getAll(): Observable<ActivityInterface[]> {
+        return this._http.get(this.endpoint, {headers: this.headers})
+        .map((result: Response) => <ActivityInterface[]>result.json())
+        .catch(this.handleError);
     }
 
-    
     private handleError(error: Response) {
-        console.error(error);
+        console.log(error);
         return Observable.throw(error.json().error || 'Server error');
     }
-
-
 
 
 }

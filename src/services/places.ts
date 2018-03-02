@@ -33,6 +33,7 @@ export class PlacesService {
         ) {
           this.headers = new Headers();
           this.headers.append('Content-Type', 'application/json; charset=UTF-8');
+
         }
 
 
@@ -51,9 +52,7 @@ export class PlacesService {
           .catch(this.handleError);
   }
 
-
   fetchPlaces(): Observable<PlaceInterface[]> {
-
       this.actionUrl = `${this._configuration.ServerWithApiUrl}Places`;
       return this._http.get(this.actionUrl, { headers: this.headers })
           .map((response: Response) => <PlaceInterface>response.json())

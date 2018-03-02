@@ -24,7 +24,11 @@ export class HomePage implements OnInit {
   places: PlaceInterface[] = [];
   locationIsSet: boolean;
 
-  // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
+  
+  actividadesDeStorage: any[];
+
+
+      // location: Location = {lat: 19.692359099999997, lng: -103.4566299};
   location: LocationInterface = {
     lat: 19.692359099999997, 
     lng: -103.4566299
@@ -71,11 +75,32 @@ export class HomePage implements OnInit {
     this.placesService.fetchPlaces()
       .subscribe(
         (places: PlaceInterface[]) => {
-          this.places = places;
-        } 
+
+          this.storage.get("Actividades")
+          .then(actividades => {
+            this.actividadesDeStorage = actividades || [];
+            
+            let nuevoArregloLugares = [];
+            places.forEach(lugar => {
+              let actividadesDeLugar = lugar.activities;
+              actividadesDeLugar.forEach(actividadDeLugar => {
+                if (this.actividadesDeStorage.indexOf(actividadDeLugar) > -1) {
+                  nuevoArregloLugares.push(lugar);
+                }
+              });
+            });
+  
+            nuevoArregloLugares = Array.from(new Set(nuevoArregloLugares));
+            this.places = nuevoArregloLugares;
+          
+          });
+
+   
+        }
       );
  
    }
+
 
   locate() {
     const loader = this.loadingCtrl.create({

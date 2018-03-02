@@ -1,12 +1,12 @@
-
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Agrega un lugar</ion-title>
+    <ion-title>
+      <h1 text-center>Agrega un lugar</h1>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
-
 
 <ion-content padding>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
@@ -15,7 +15,7 @@
         <ion-label fixed>Nombre</ion-label>
         <ion-input
           type="text"
-          placeholder="Cancha deportiva..."
+          placeholder="Nombre del lugar"
           name="title"
           ngModel
           required></ion-input>
@@ -28,6 +28,39 @@
           required></ion-textarea>
       </ion-item>
     </ion-list>
+<!--
+    <ion-item>
+        <ion-label fixed>Dirección</ion-label>
+        <ion-input
+          type="text"
+          placeholder="..."
+          name="direccion"
+          ngModel></ion-input>
+      </ion-item>
+-->      
+      <ion-item>
+        <ion-label fixed>Horarios</ion-label>
+        <ion-input
+          type="text"
+          placeholder="12:12am. - 15:30pm."
+          name="horarios"
+          ngModel
+          required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>¿Es público?</ion-label>
+          <ion-checkbox color="blue" ngModel name="public" checked="false"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label fixed>Costo</ion-label>
+        <ion-input
+          type="text"
+          placeholder="100"
+          name="cost"
+          ngModel
+          required ></ion-input>
+      </ion-item>
+
     <ion-grid>
       <ion-row>
         <ion-col>
@@ -67,6 +100,7 @@
           </sebm-google-map>
         </ion-col>
       </ion-row>
+
       <!--
       <ion-row>
         <ion-col text-center>
@@ -75,18 +109,15 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <button
-            ion-button
-            icon-left
-            block
-            outline
-            type="button"
-            (click)="onTakePhoto()">
-            <ion-icon name="camera"></ion-icon>
-            Abrir Cámara
-          </button>
+          <ion-list>
+            <ion-item *ngFor="let actividad of actividades; let i = index;">
+                <ion-label>{{actividad.nombre}}</ion-label>
+                <ion-checkbox color="blue" [(ngModel)]="actividad.visible" checked="false" [ngModelOptions]="{standalone: true}"></ion-checkbox>
+            </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
+
       <ion-row *ngIf="imageUrl != ''">
         <ion-col>
           <img [src]="imageUrl">

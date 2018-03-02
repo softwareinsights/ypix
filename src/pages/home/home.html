@@ -4,8 +4,8 @@
     <button ion-button menuToggle icon-only>
       <ion-icon name='menu'></ion-icon>
     </button>
-    <ion-title>
-      Lugares
+    <ion-title text-center>
+      <h1>INICIO</h1>
     </ion-title>
     <ion-buttons end>
       <button ion-button icon-only [navPush]="addPlacePage">
@@ -23,7 +23,8 @@
         <sebm-google-map
           [latitude]="location.lat"
           [longitude]="location.lng"
-          [zoom]="14">
+          [zoom]="14"
+          [zoomControl]="false">
           <sebm-google-map-marker
             [latitude]="place.location.lat"
             [longitude]="place.location.lng" 
@@ -31,10 +32,15 @@
           </sebm-google-map-marker>
         </sebm-google-map>
       </ion-col>
-    </ion-row>
+    </ion-row> 
     <ion-row>
       <ion-col>
-        <button ion-button full (click)="locate()">Localízame</button>
+        <ion-fab top right edge>
+            <button ion-fab mini (click)="locate()">
+              <ion-icon name="locate"></ion-icon>
+            </button>
+       </ion-fab>
+       
       </ion-col>
     </ion-row>
   </ion-grid>
